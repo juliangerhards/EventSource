@@ -80,17 +80,17 @@ open class EventSource: NSObject, EventSourceProtocol, URLSessionDataDelegate {
     private(set) public var lastEventId: String?
     private(set) public var retryTime = EventSource.DefaultRetryTime
     private(set) public var headers: [String: String]
-    private(set) public var readyState: EventSourceState
+    open var readyState: EventSourceState
 
     private var onOpenCallback: (() -> Void)?
     private var onComplete: ((Int?, Bool?, NSError?) -> Void)?
     private var onMessageCallback: ((_ id: String?, _ event: String?, _ data: String?) -> Void)?
     private var eventListeners: [String: (_ id: String?, _ event: String?, _ data: String?) -> Void] = [:]
 
-    private var eventStreamParser: EventStreamParser?
+    open var eventStreamParser: EventStreamParser?
     private var operationQueue: OperationQueue
     private var mainQueue = DispatchQueue.main
-    private var urlSession: URLSession?
+    open var urlSession: URLSession?
 
     public init(
         url: URL,
@@ -192,9 +192,9 @@ open class EventSource: NSObject, EventSourceProtocol, URLSessionDataDelegate {
     }
 }
 
-internal extension EventSource {
+public extension EventSource {
 
-    func sessionConfiguration(lastEventId: String?) -> URLSessionConfiguration {
+    open func sessionConfiguration(lastEventId: String?) -> URLSessionConfiguration {
 
         var additionalHeaders = headers
         if let eventID = lastEventId {
