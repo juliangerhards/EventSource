@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class EventStreamParser {
+public final class EventStreamParser {
 
     //  Events are separated by end of line. End of line can be:
     //  \r = CR (Carriage Return) → Used as a new line character in Mac OS before X
