@@ -88,7 +88,7 @@ open class EventSource: NSObject, EventSourceProtocol, URLSessionDataDelegate {
     private var eventListeners: [String: (_ id: String?, _ event: String?, _ data: String?) -> Void] = [:]
 
     open var eventStreamParser: EventStreamParser?
-    private var operationQueue: OperationQueue
+    open var operationQueue: OperationQueue
     private var mainQueue = DispatchQueue.main
     open var urlSession: URLSession?
 
