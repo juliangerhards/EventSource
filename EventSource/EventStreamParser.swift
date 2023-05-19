@@ -17,7 +17,7 @@ public final class EventStreamParser {
     private let validNewlineCharacters = ["\r\n", "\n", "\r"]
     private let dataBuffer: NSMutableData
 
-    init() {
+    public init() {
         dataBuffer = NSMutableData()
     }
 
