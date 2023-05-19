@@ -106,7 +106,7 @@ open class EventSource: NSObject, EventSourceProtocol, URLSessionDataDelegate {
         super.init()
     }
 
-    public func connect(lastEventId: String? = nil) {
+    open func connect(lastEventId: String? = nil) {
         eventStreamParser = EventStreamParser()
         readyState = .connecting
 
